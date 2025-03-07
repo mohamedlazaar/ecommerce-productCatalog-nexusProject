@@ -1,49 +1,51 @@
-import { useSelector, useDispatch } from "react-redux";
-import { RootState, AppDispatch } from "@/store";
-import { filteredProductsByCategory, sortProductsByPrice } from '@/store/productSilce'
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '@/store/cartSilce';
+import ProductCard from './common/ProductCard';
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import { AppDispatch } from '@/store';
 
-const ProductList = ()=>{
+const ProductList = ({ products }: any) => {
     const dispatch = useDispatch<AppDispatch>();
-    const { filteredProducts }:any = useSelector((state: RootState)=> state.product)
-    const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>)=>{
-        dispatch(filteredProductsByCategory(e.target.value))
-    }
-    const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>)=>{
-        dispatch(sortProductsByPrice(e.target.value))
-    }
-    console.log({filteredProducts})
-    return(
-        <div className="flex flex-col">
-            <div className="flex">
-        <div className="flex justify-centßer items-center">
-            <select className="p-2 rounded-lg" onChange={handleCategoryChange}>
-                <option value="All">All</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Fashion">Fashion</option>
-                <option value="Home Appliances">Home Appliances</option>
-                <option value="Booksß">Books</option>
-            </select>
-        </div>
-        <div className="flex justify-centßer items-center">
-            <select className="p-2 rounded-lg" onChange={handleSortChange}>
-                <option value=''>select</option>
-                <option value="asc">Highest</option>
-                <option value="desc">Lowest</option>
-            </select>
-        </div>                
+    const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 10;
+
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+    const totalPages = Math.ceil(products.length / productsPerPage);
+
+    return (
+        <div className="w-full">
+            <div className="flex flex-wrap justify-center items-center gap-[10px]">
+                {currentProducts.map((product: any) => (
+                    <ProductCard 
+                        key={product.id} 
+                        product={product} 
+                        addToCart={() => dispatch(addToCart(product))} 
+                    />
+                ))}
             </div>
 
-        <div className="flex justify-center items-center gap-3 p-2 flex-wrap"> 
-            {filteredProducts.map((product:any)=>(
-                <div key={product.id} className="w-[200px]">
-                     <img src={product.image} alt={product.name} className="h-40 w-full object-cover mb-4" />
-                    <h2>{product.name}</h2>
-                    <p>Price: {product.price}</p>
-                </div>
-            ))}
-        </div>            
+            <div className="flex justify-center  mt-6 mb-6 gap-2">
+                <button 
+                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                    className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50">
+                    <FaArrowLeft />
+                </button>
+                <span className="px-4 py-2 bg-gray-100 rounded">
+                    Page {currentPage} of {totalPages}
+                </span>
+                <button 
+                    onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                    disabled={currentPage === totalPages}
+                    className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50">
+                    <FaArrowRight />
+                </button>
+            </div>
         </div>
+    );
+};
 
-    )
-}
 export default ProductList;

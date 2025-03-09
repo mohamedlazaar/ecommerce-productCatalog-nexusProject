@@ -5,7 +5,7 @@ import { AppDispatch, RootState } from '@/store';
 import { fetchCategories } from '@/store/categorySilce';
 import { filteredProductsByCategory } from '@/store/productSlice';
 
-const FilterByCategory = ({ selectedCategory }: { selectedCategory: string }) => {
+const FilterByCategory = ({ selectedCategory }: any) => {
     const router = useRouter();
     const dispatch = useDispatch<AppDispatch>();
     const categories = useSelector((state: RootState) => state.categories.list);

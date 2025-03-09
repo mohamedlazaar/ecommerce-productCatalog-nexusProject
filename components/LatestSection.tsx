@@ -8,7 +8,6 @@ import Slider from "react-slick";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Autoplay } from "swiper/modules";
 
 const ArrowLeft = (props: any) => (
     <button {...props} className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 z-10 text-gray-700 hover:text-black cursor-pointer ">
@@ -25,19 +24,11 @@ const ArrowRight = (props: any) => (
 const LatestProducts = () => {
     const dispatch = useDispatch<AppDispatch>();
     const products = useSelector((state: RootState) => state.products.products);
-    // console.log("products", products)
+
     useEffect(() => {
         dispatch(fetchProducts());
-        // console.log("fetch products",dispatch(fetchProducts()))
     }, [dispatch]);
 
-    // // Get One Product Per Category
-    // const uniqueCategoryProducts = products.reduce((acc: any[], product: any)=>{
-    //     if(!acc.some((item)=> item.category.name === product.category.name)){
-    //         acc.push(product);
-    //     }
-    //     return acc;
-    // }, [])
   
 
     const settings = {

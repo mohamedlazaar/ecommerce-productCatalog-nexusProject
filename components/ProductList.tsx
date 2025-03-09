@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/store/cartSilce';
 import ProductCard from './common/ProductCard';

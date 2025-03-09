@@ -2,22 +2,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import vercel from "@/public/vercel.svg"
-import { FaSignInAlt } from "react-icons/fa";
 import { LuShoppingCart } from "react-icons/lu"
 import { useState } from "react";
 import { TiThMenu } from "react-icons/ti"
 import Search from "../common/Search";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "@/store/index"
-import { IoSearchSharp } from "react-icons/io5";
 
 
 const Header = ()=>{
   const cart = useSelector((state: RootState) => state.cart.cart);
   const totalQuantity = cart.reduce((acc, item) => acc + (item.quantity ?? 0), 0);
-  
-
-
 
     const [mobileMenu, setMobileMenu] = useState<boolean>(false)
 
@@ -49,9 +44,6 @@ const Header = ()=>{
         {/* Informations */}
         <div className="p-2  md:w-[10%]">
           <ul className="flex gap-5 justify-center items-center">
-            {/* <li className="w-[24px] h-[24px]">
-              <Link href="/login" className=" w-[24px] h-[24px]"><FaSignInAlt className="!w-full !h-full hover:text-amber-400" /></Link> 
-            </li> */}
             <li className={`w-[24px] h-[24px] flex items-center relative `}>
             <Link href="/cart" className="w-[24px] h-[24px] relative"><LuShoppingCart className="!w-full  !h-full hover:text-amber-400"/></Link> 
             {totalQuantity > 0 && (

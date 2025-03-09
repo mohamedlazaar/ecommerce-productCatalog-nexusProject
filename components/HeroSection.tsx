@@ -1,22 +1,22 @@
 "use client"
+import Link from "next/link";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 
 
 const images = [
   {
-    src: "https://m.media-amazon.com/images/I/61rA2HUCX6L._SX3000_.jpg",
+    src: "https://www.logoinfotech.com/wp-content/uploads/2023/01/gadgets-social-media-banner-design.jpg",
     title: "Discover the Future of Tech",
     description: "Explore our latest products and innovations.",
   },
   {
-    src:  "https://m.media-amazon.com/images/I/61lwJy4B8PL._SX3000_.jpg",
+    src:  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqzW7i0NaSqkxd_WCd_IiKtbBSyALrmCBTcg&s",
     title: "Style Meets Comfort",
     description: "Upgrade your wardrobe with our new collection.",
   },
   {
-    src:  "https://m.media-amazon.com/images/I/81KkrQWEHIL._SX3000_.jpg",
+    src:  "https://img.freepik.com/free-vector/realistic-fitness-club-sale-horizontal-banner-template_52683-81877.jpg",
     title: "Unleash Your Potential",
     description: "Gear up with top-quality equipment for every adventure.",
   },
@@ -61,9 +61,10 @@ const HeroSlider = () => {
               {slide.title}
             </h1>
             <p className="text-lg text-white mb-6">{slide.description}</p>
-            <button className="bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded-full cursor-pointer">
+            
+            <Link href="/categories/all" className="bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded-full cursor-pointer">
               Discover Now
-            </button>
+            </Link>
           </div>
         </div>
       ))}

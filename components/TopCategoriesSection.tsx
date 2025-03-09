@@ -11,7 +11,6 @@ const CategoriesSection = () => {
     const categories: any = useSelector((state: RootState) => state.categories.list);
     const loading = useSelector((state: RootState) => state.categories.loading);
 
-    console.log("top-categories", categories)
 
     useEffect(() => {
         dispatch(fetchCategories());

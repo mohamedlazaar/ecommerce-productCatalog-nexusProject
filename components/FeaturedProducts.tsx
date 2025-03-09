@@ -8,7 +8,6 @@ import Slider from "react-slick";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Autoplay } from "swiper/modules";
 
 const ArrowLeft = (props: any) => (
     <button {...props} className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 z-10 text-gray-700 hover:text-black cursor-pointer ">
@@ -28,7 +27,6 @@ const FeaturedProducts = () => {
     console.log("products", products)
     useEffect(() => {
         dispatch(fetchProducts());
-        // console.log("fetch products",dispatch(fetchProducts()))
     }, [dispatch]);
 
     // Get One Product Per Category
@@ -40,7 +38,6 @@ const FeaturedProducts = () => {
         return acc;
     }, [])
     
-    // console.log("uniqueCategoryProducts", uniqueCategoryProducts)
 
     const settings = {
         dots: true,

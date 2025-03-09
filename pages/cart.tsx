@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../store";
-import { addToCart, updateQuantity, removeFromCart, clearCart } from "@/store/cartSilce";
+import {  updateQuantity, removeFromCart } from "@/store/cartSilce";
 import Link from "next/link";
 
 const Cart: React.FC = () => {

@@ -8,7 +8,6 @@ import { useState } from "react";
 const CheckoutPage = () => {
     const cart = useSelector((state: RootState) => state.cart.cart);
     const totalAmount = useSelector((state: RootState) => state.cart.totalAmount);
-    const [orderSuccess, setOrderSuccess] = useState(false);
 
     return (
         <div className="container mx-auto p-6">
@@ -43,7 +42,6 @@ const CheckoutPage = () => {
                             type="submit" 
                             onClick={()=>{
                                 alert("Payment Successful!");
-                                setOrderSuccess(true)
                             }}
                             className="w-full mt-6 bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700">
                                     <Link href="/">Order Successful</Link>

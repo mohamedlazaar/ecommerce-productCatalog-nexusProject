@@ -15,7 +15,6 @@ const CategoryPage = () => {
     const { category, page } = router.query;
 
     const products = useSelector((state: RootState) => state.products.filteredProducts);
-    const loading = useSelector((state: RootState) => state.products.loading);
 
     const [currentPage, setCurrentPage] = useState(Number(page) || 1);
     const productsPerPage = 10;
@@ -29,22 +28,7 @@ const CategoryPage = () => {
             dispatch(filteredProductsByCategory(category as string));
         }
     }, [category, dispatch]);
-    // useEffect(() => {
-    //     async function fetchdata(){
-    //         const response = await fetch('https://abdelrhmang4.pythonanywhere.com/api/categories', {
-    //             method: 'GET',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
 
-    //             },
-    //                 });
-    //             if (!response.ok) {
-    //                 throw new Error('Failed to fetch products');
-    //             }
-    //             return response.json();
-    //     }
-    //     console.log("fetch" , fetchdata())
-    // }, [])
 
     useEffect(() => {
         setCurrentPage(Number(page) || 1);
@@ -61,9 +45,6 @@ const CategoryPage = () => {
         router.push(`/categories/${category || 'all'}?page=${newPage}`);
     };
 
-    // if (loading) {
-    //     return <div className='w-full h-[100vh]'><p>Loading products...</p></div>
-    // }
 
     return (
         <div className="">

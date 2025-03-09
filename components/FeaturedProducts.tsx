@@ -18,22 +18,17 @@ interface Product {
     description?: string;
     // Add other product properties as needed
 }
-interface SliderArrowProps {
-    className?: string;
-    style?: React.CSSProperties;
-    onClick?: () => void;
-}
 
 
 
-const ArrowLeft = (props: SliderArrowProps) => (
-    <button {...props} className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 z-10 text-gray-700 hover:text-black cursor-pointer ">
+const ArrowLeft = () => (
+    <button  className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 z-10 text-gray-700 hover:text-black cursor-pointer ">
         <FaArrowLeft size={30} />
     </button>
 );
 
-const ArrowRight = (props: SliderArrowProps) => (
-    <button {...props} className="absolute right-[-40px] top-1/2 transform -translate-y-1/2 z-10 text-gray-700 hover:text-black cursor-pointer">
+const ArrowRight = () => (
+    <button className="absolute right-[-40px] top-1/2 transform -translate-y-1/2 z-10 text-gray-700 hover:text-black cursor-pointer">
         <FaArrowRight size={30} />
     </button>
 );
@@ -41,7 +36,6 @@ const ArrowRight = (props: SliderArrowProps) => (
 const FeaturedProducts = () => {
     const dispatch = useDispatch<AppDispatch>();
     const products = useSelector((state: RootState) => state.products.products);
-    console.log("products", products)
     useEffect(() => {
         dispatch(fetchProducts());
     }, [dispatch]);

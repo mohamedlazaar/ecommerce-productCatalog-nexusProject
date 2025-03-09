@@ -7,6 +7,7 @@ import { fetchCategories } from '@/store/categorySilce';
 import Link from 'next/link';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Image from "next/image";
 
 // Define proper interface for Category
 interface Category {
@@ -58,8 +59,8 @@ const CategoriesSection = () => {
                 {products.list.map((category: Category) => (
                     <div key={category.id} className="px-2">
                         <div className="group flex flex-col w-full h-[200px] items-center rounded-[10px] border-[1px] relative overflow-hidden">
-                            {/* You can switch to Next.js Image component to fix the warning, but keeping img here for now */}
-                            <img 
+                            {/* You can switch to Next.js Image component to fix the warning, but keeping Image here for now */}
+                            <Image width={400} height={400}
                                 src={category.category_image_url} 
                                 className="w-full h-full rounded-[10px] object-cover group-hover:scale-110 transition-all ease-in-out" 
                                 alt={category.name}

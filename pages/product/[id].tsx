@@ -5,6 +5,8 @@ import { AppDispatch, RootState } from '@/store';
 import { fetchProductById } from '@/store/productSlice';
 import { addToCart } from '@/store/cartSilce';
 import Head from 'next/head';
+import Image from "next/image";
+
 
 const ProductPage = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -38,7 +40,7 @@ const ProductPage = () => {
             <div className="container mx-auto px-6 py-10">
                 <div className="flex flex-wrap">
                     <div className="w-full md:w-1/2 p-4">
-                        <img
+                        <Image width={400} height={400}
                             src={product.image_url}
                             alt={product.name}
                             className="w-full h-auto object-cover rounded-lg shadow-lg"

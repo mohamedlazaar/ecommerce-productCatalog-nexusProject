@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
+import Image from "next/image";
 
 
 const images = [
@@ -51,7 +52,7 @@ const HeroSlider = () => {
             index === currentSlide ? "opacity-100" : "opacity-0"
           }`}
         >
-          <img
+          <Image width={400} height={400}
             src={slide.src}
             alt={slide.title}
             className="w-full h-full object-cover"

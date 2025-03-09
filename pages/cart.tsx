@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import {  updateQuantity, removeFromCart } from "@/store/cartSilce";
 import Link from "next/link";
+import Image from "next/image";
+
 
 const Cart = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -38,7 +40,7 @@ const Cart = () => {
                     {cart.length > 0 ? (
                         cart.map((item) => (
                             <div key={item.id} className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
-                                <img src={item.image_url} alt={item.name} className="w-full rounded-lg sm:w-40" />
+                                <Image width={400} height={400} src={item.image_url} alt={item.name} className="w-full rounded-lg sm:w-40" />
                                 <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                                     <div className="mt-5 sm:mt-0">
                                         <h2 className="text-lg font-bold text-gray-900">{item.name}</h2>

@@ -9,13 +9,30 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const ArrowLeft = (props: any) => (
+interface Product {
+    id: string | number;
+    name: string;
+    price: number;
+    image_url: string;
+    category_name: string;
+    description?: string;
+    // Add other product properties as needed
+}
+interface SliderArrowProps {
+    className?: string;
+    style?: React.CSSProperties;
+    onClick?: () => void;
+}
+
+
+
+const ArrowLeft = (props: SliderArrowProps) => (
     <button {...props} className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 z-10 text-gray-700 hover:text-black cursor-pointer ">
         <FaArrowLeft size={30} />
     </button>
 );
 
-const ArrowRight = (props: any) => (
+const ArrowRight = (props: SliderArrowProps) => (
     <button {...props} className="absolute right-[-40px] top-1/2 transform -translate-y-1/2 z-10 text-gray-700 hover:text-black cursor-pointer">
         <FaArrowRight size={30} />
     </button>
@@ -30,7 +47,7 @@ const FeaturedProducts = () => {
     }, [dispatch]);
 
     // Get One Product Per Category
-    const uniqueCategoryProducts = products.reduce((acc: any[], product: any)=>{
+    const uniqueCategoryProducts = products.reduce((acc: typeof product[], product: Product)=>{
        
         if(!acc.some((item)=> item.category_name === product.category_name)){
             acc.push(product);

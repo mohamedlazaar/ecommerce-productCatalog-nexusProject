@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store";
-import { fetchProducts } from "@/store/productSlice";
+import { fetchProducts, Product } from "@/store/productSlice"; // Import the existing Product type
 import { addToCart } from "@/store/cartSilce";
 import { useEffect } from "react";
 import ProductCard from "./common/ProductCard";
@@ -9,13 +9,19 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const ArrowLeft = (props: any) => (
+interface SliderArrowProps {
+    className?: string;
+    style?: React.CSSProperties;
+    onClick?: () => void;
+}
+
+const ArrowLeft = (props: SliderArrowProps) => (
     <button {...props} className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 z-10 text-gray-700 hover:text-black cursor-pointer ">
         <FaArrowLeft size={30} />
     </button>
 );
 
-const ArrowRight = (props: any) => (
+const ArrowRight = (props: SliderArrowProps) => (
     <button {...props} className="absolute right-[-40px] top-1/2 transform -translate-y-1/2 z-10 text-gray-700 hover:text-black cursor-pointer">
         <FaArrowRight size={30} />
     </button>
@@ -28,8 +34,6 @@ const LatestProducts = () => {
     useEffect(() => {
         dispatch(fetchProducts());
     }, [dispatch]);
-
-  
 
     const settings = {
         dots: true,
@@ -62,8 +66,8 @@ const LatestProducts = () => {
     return (
         <div className="container mx-auto pt-[0px] pb-[100px] mb-[20px] ">
             <h1 className="text-4xl font-extrabold pl-[20px] mb-[30px]">Latest Products</h1>
-            <Slider {...settings} className="!flex  !justify-around  pb-[30px] !items-center">
-                {products.slice(0, 5).map((product: any) => (
+            <Slider {...settings} className="!flex !justify-around pb-[30px] !items-center">
+                {products.slice(0, 5).map((product) => (
                     <ProductCard key={product.id} product={product} addToCart={() => dispatch(addToCart(product))} />
                 ))}
             </Slider>

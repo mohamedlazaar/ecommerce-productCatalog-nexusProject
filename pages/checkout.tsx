@@ -3,6 +3,8 @@
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import Link from "next/link";
+import Image from "next/image";
+
 
 const CheckoutPage = () => {
     const cart = useSelector((state: RootState) => state.cart.cart);
@@ -58,7 +60,7 @@ const CheckoutPage = () => {
                             cart.map((product) => (
                                 <div key={product.id} className="flex items-center justify-between">
                                     <div className="flex items-center">
-                                        <img 
+                                        <Image width={400} height={400}
                                             src={product.image_url} 
                                             alt={product.name} 
                                             className="w-16 h-16 object-cover rounded-md" 

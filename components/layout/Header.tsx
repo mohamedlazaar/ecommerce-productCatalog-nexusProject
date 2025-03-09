@@ -27,7 +27,7 @@ const Header = ()=>{
         <div className="flex gap-2 p-2  items-center md:w-[15%] justify-start">
         <Link href="/" className="flex gap-2 items-center" >
           <Image src={vercel} alt="logo" width={40} height={40} />
-          <h1 className="md:block hidden text-[20px] font-extrabold">Store Title</h1>
+          <h1 className="md:block hidden text-[20px] font-extrabold">Alx Nexus</h1>
         </Link>
  
         </div>

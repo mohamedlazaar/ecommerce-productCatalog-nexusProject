@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { store } from "@/store";
 import { Poppins } from "next/font/google";
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -17,6 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <main className='w-full overflow-x-hidden'>
       <Header />
         <Component {...pageProps} />
+        <Footer />
       </main>
     </Provider>
   );

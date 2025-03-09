@@ -7,6 +7,8 @@ import  Header  from "@/components/layout/Header";
 import HeroSection from "@/components/HeroSection";
 import CategoriesSection from "@/components/CategoriesSection";
 import FeaturedProducts from "@/components/FeaturedProducts";
+import LatestProducts from "@/components/LatestSection";
+import TopCategoriesSection from "@/components/TopCategoriesSection";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +26,8 @@ export default function Home() {
      <HeroSection/>
      <CategoriesSection />
      <FeaturedProducts />
+     <LatestProducts />
+     <TopCategoriesSection />
     </div>
   );
 }

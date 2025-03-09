@@ -11,15 +11,14 @@ import 'slick-carousel/slick/slick-theme.css';
 const CategoriesSection = () => {
     const dispatch = useDispatch<AppDispatch>();
     const products = useSelector((state: RootState) => state.categories);
-    // const isLoading = useSelector((state: RootState) => state.products.loading);
-    // const error = useSelector((state: RootState) => state.products.error);
+  
 
     useEffect(() => {
         dispatch(fetchCategories());
+        console.log("fet", dispatch(fetchCategories()))
     }, [dispatch]);
 
-    // if (isLoading) return <div className="flex justify-center items-center">Loading categories...</div>;
-    // if (error) return <div>Error: {error}</div>;
+
 
     const settings = {
         dots: true,
@@ -27,6 +26,7 @@ const CategoriesSection = () => {
         speed: 500,
         slidesToShow: 5,
         slidesToScroll: 1,
+        padding: "0",
         nextArrow: <FaLongArrowAltRight className="text-3xl cursor-pointer" />,
         prevArrow: <FaLongArrowAltLeft className="text-3xl cursor-pointer" />,
         responsive: [
@@ -52,9 +52,9 @@ const CategoriesSection = () => {
             <Slider {...settings} className="w-full">
                 {products.list.map((category: any) => (
                     <div key={category.id} className="px-2">
-                        <div className="group flex flex-col w-full h-[200px] items-center justify-between rounded-[10px] border-[1px] relative overflow-hidden">
+                        <div className="group flex flex-col w-full h-[200px] items-center  rounded-[10px] border-[1px] relative overflow-hidden">
                             <img 
-                                src={category.image} 
+                                src={category.category_image_url} 
                                 className="w-full h-full rounded-[10px] object-cover group-hover:scale-110 transition-all ease-in-out" 
                                 alt={category.name}
                             />  
@@ -62,7 +62,7 @@ const CategoriesSection = () => {
                             <p className="font-extrabold text-center text-[20px] text-white mt-2 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] z-2">
                                 {category.name}
                             </p>
-                            <Link href={`/categories/${category.name.toLowerCase()}`} className="absolute top-0 left-0 w-full h-full z-3 content-['']"></Link>
+                            <Link href={`/categories/${category.name}`} className="absolute top-0 left-0 w-full h-full z-3 content-['']"></Link>
                         </div>
                     </div>
                 ))}

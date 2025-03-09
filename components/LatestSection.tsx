@@ -22,25 +22,23 @@ const ArrowRight = (props: any) => (
     </button>
 );
 
-const FeaturedProducts = () => {
+const LatestProducts = () => {
     const dispatch = useDispatch<AppDispatch>();
     const products = useSelector((state: RootState) => state.products.products);
-    console.log("products", products)
+    // console.log("products", products)
     useEffect(() => {
         dispatch(fetchProducts());
         // console.log("fetch products",dispatch(fetchProducts()))
     }, [dispatch]);
 
-    // Get One Product Per Category
-    const uniqueCategoryProducts = products.reduce((acc: any[], product: any)=>{
-       
-        if(!acc.some((item)=> item.category_name === product.category_name)){
-            acc.push(product);
-        }
-        return acc;
-    }, [])
-    
-    // console.log("uniqueCategoryProducts", uniqueCategoryProducts)
+    // // Get One Product Per Category
+    // const uniqueCategoryProducts = products.reduce((acc: any[], product: any)=>{
+    //     if(!acc.some((item)=> item.category.name === product.category.name)){
+    //         acc.push(product);
+    //     }
+    //     return acc;
+    // }, [])
+  
 
     const settings = {
         dots: true,
@@ -72,9 +70,9 @@ const FeaturedProducts = () => {
 
     return (
         <div className="container mx-auto pt-[0px] pb-[100px] mb-[20px] ">
-            <h1 className="text-4xl font-extrabold pl-[20px] mb-[30px]">Featured Products</h1>
+            <h1 className="text-4xl font-extrabold pl-[20px] mb-[30px]">Latest Products</h1>
             <Slider {...settings} className="!flex  !justify-around  pb-[30px] !items-center">
-                {uniqueCategoryProducts.slice(0, 5).map((product: any) => (
+                {products.slice(0, 5).map((product: any) => (
                     <ProductCard key={product.id} product={product} addToCart={() => dispatch(addToCart(product))} />
                 ))}
             </Slider>
@@ -82,4 +80,4 @@ const FeaturedProducts = () => {
     );
 };
 
-export default FeaturedProducts;
+export default LatestProducts;

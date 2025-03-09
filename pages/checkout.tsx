@@ -3,7 +3,6 @@
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import Link from "next/link";
-import { useState } from "react";
 
 const CheckoutPage = () => {
     const cart = useSelector((state: RootState) => state.cart.cart);

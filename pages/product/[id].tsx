@@ -21,7 +21,7 @@ const ProductPage = () => {
     }, [id, dispatch]);
 
     if (loading) {
-        return <p className="text-center text-lg">Loading product details...</p>;
+        return <div className='w-[100vw] h-[100vw]'><p className="text-center text-lg">Loading product details...</p></div>;
     }
 
     if (!product) {

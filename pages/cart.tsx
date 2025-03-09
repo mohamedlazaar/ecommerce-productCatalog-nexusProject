@@ -4,7 +4,7 @@ import { AppDispatch, RootState } from "../store";
 import {  updateQuantity, removeFromCart } from "@/store/cartSilce";
 import Link from "next/link";
 
-const Cart: React.FC = () => {
+const Cart = () => {
     const dispatch = useDispatch<AppDispatch>();
     const { cart, totalAmount } = useSelector((state: RootState) => state.cart);
 
@@ -48,6 +48,7 @@ const Cart: React.FC = () => {
                                         <div className="flex items-center border-gray-100">
                                             <button
                                                 onClick={() => handleDecrement(item.id)}
+                                                aria-label="Decrease quantity"
                                                 className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"
                                             >
                                                 -
@@ -61,6 +62,7 @@ const Cart: React.FC = () => {
                                             />
                                             <button
                                                 onClick={() => handleIncrement(item.id)}
+                                                aria-label="Increase quantity"
                                                 className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"
                                             >
                                                 +
@@ -68,7 +70,7 @@ const Cart: React.FC = () => {
                                         </div>
                                         <div className="flex justify-center items-center space-x-4">
                                             <p className="text-md font-bold">${item.price * (item.quantity || 1)}</p>
-                                            <button onClick={() => handleRemove(item.id)}>
+                                            <button onClick={() => handleRemove(item.id)} aria-label="Remove item"> 
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="none"
@@ -101,7 +103,8 @@ const Cart: React.FC = () => {
                     <div className="flex justify-between">
                         <p className="text-lg font-bold">Total</p>
                         <div>
-                            <p className="mb-1 text-lg font-bold">${(totalAmount + 4.99).toFixed(2)} USD</p>
+                        <p className="text-gray-700">${totalAmount?.toFixed(2) || "0.00"}</p>
+
                         </div>
                     </div>
                     <Link href="/checkout">

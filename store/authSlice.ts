@@ -25,7 +25,7 @@ export const loginUser = createAsyncThunk(
     'auth/loginUser',
     async (credentials: { email: string; password: string }, { rejectWithValue }) => {
         try {
-            const response = await fetch('https://fakestoreapi.com/users');
+            const response = await fetch('https://api.escuelajs.co/api/v1/users');
             const users = await response.json();
 
             const user = users.find((u: any) => u.email === credentials.email && u.password === credentials.password);
@@ -46,7 +46,7 @@ export const signupUser = createAsyncThunk(
     'auth/signupUser',
     async (newUser: User, { rejectWithValue }) => {
         try {
-            const response = await fetch('https://fakestoreapi.com/users', {
+            const response = await fetch('https://api.escuelajs.co/api/v1/users', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newUser),

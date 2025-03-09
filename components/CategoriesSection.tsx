@@ -1,3 +1,4 @@
+"use client"
 import { useEffect } from 'react';
 import Slider from 'react-slick';
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";

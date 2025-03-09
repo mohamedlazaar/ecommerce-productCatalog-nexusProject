@@ -1,3 +1,4 @@
+'use client'
 import { IoSearchSharp } from "react-icons/io5"
 
 

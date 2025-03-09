@@ -1,3 +1,4 @@
+'use client'
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/store/cartSilce';
 import ProductCard from './common/ProductCard';

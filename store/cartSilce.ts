@@ -12,24 +12,22 @@ export interface Product {
 }
 
 interface CartState {
-    reduce(arg0: (acc: any, item: any) => any, arg1: number): unknown;
     cart: Product[];
     totalAmount: number;
 }
 
+// ✅ Initial State (cleaned up)
 const initialState: CartState = {
     cart: [],
     totalAmount: 0,
-    reduce: function (arg0: (acc: any, item: any) => any, arg1: number): unknown {
-        throw new Error("Function not implemented.");
-    }
 };
 
-
+// ✅ Helper function to calculate total amount
 const calculateTotalAmount = (cart: Product[]) => {
     return cart.reduce((total, product) => total + product.price * (product.quantity || 1), 0);
 };
 
+// ✅ Cart Slice
 const cartSlice = createSlice({
     name: "cart",
     initialState,
